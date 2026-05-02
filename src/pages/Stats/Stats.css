@@ -1,0 +1,30 @@
+/* Stats.css */
+
+.stats__donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stats__donut-svg {
+  flex-shrink: 0;
+}
+
+.stats__donut-stats {
+  flex: 1;
+}
+
+.stats__donut-item {
+  margin-bottom: 10px;
+}
+
+.stats__donut-pct {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.stats__donut-lbl {
+  font-size: 11px;
+  color: var(--text-secondary);
+}

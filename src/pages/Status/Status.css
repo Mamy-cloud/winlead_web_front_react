@@ -1,0 +1,90 @@
+/* Status.css */
+
+.status__selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.status__btn {
+  flex: 1;
+  padding: 10px 8px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border-light);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  transition: all var(--transition-base);
+}
+
+.status__btn--available {
+  background: var(--accent-light);
+  border-color: var(--accent-mid);
+  color: var(--accent-dark);
+  font-weight: 500;
+}
+
+.status__btn--busy {
+  background: var(--color-warning-bg);
+  border-color: #FAC775;
+  color: var(--color-warning);
+  font-weight: 500;
+}
+
+.status__btn--offline {
+  background: #F1EFE8;
+  border-color: #D3D1C7;
+  color: #5F5E5A;
+  font-weight: 500;
+}
+
+/* ─── Schedule Grid ─── */
+.status__schedule {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.status__day-col { text-align: center; }
+
+.status__day-name {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.status__slot {
+  height: 22px;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.status__slot:hover { opacity: 0.75; }
+.status__slot--on      { background: var(--accent); }
+.status__slot--off     { background: var(--bg-secondary); border: 0.5px solid var(--border-subtle); }
+.status__slot--partial { background: var(--accent-mid); }
+
+.status__legend {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.status__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status__legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}

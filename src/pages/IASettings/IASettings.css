@@ -1,0 +1,7 @@
+/* IASettings.css */
+
+.ia__prompt-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}

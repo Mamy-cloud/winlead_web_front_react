@@ -1,0 +1,244 @@
+/* Payment.css */
+
+/* ─── Tabs ─── */
+.payment__tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  width: fit-content;
+}
+
+.payment__tab {
+  padding: 6px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.payment__tab--active {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ─── Plans ─── */
+.payment__plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.payment__plan-card {
+  background: var(--bg-primary);
+  border: 0.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: relative;
+  transition: border-color var(--transition-base);
+}
+
+.payment__plan-card--popular {
+  border-color: var(--accent-mid);
+}
+
+.payment__plan-card--active {
+  border-color: var(--accent);
+  border-width: 1.5px;
+}
+
+.payment__popular-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 12px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.payment__plan-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.payment__plan-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.payment__plan-price {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.payment__plan-price span {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.payment__plan-features {
+  list-style: none;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.payment__plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.payment__plan-features li svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.payment__plan-btn {
+  width: 100%;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--accent);
+  background: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all var(--transition-fast);
+}
+
+.payment__plan-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: white;
+}
+
+.payment__plan-btn--current {
+  background: var(--accent-light);
+  border-color: var(--accent-mid);
+  color: var(--accent-dark);
+  cursor: default;
+}
+
+.payment__renew-info {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  margin-top: 4px;
+}
+
+/* ─── Carte bancaire ─── */
+.payment__card-preview {
+  background: linear-gradient(135deg, #1a1f71 0%, #2d3561 100%);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  color: white;
+}
+
+.payment__card-brand {
+  margin-bottom: 16px;
+}
+
+.payment__card-number {
+  font-size: 16px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.payment__card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.payment__secure-note {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 10px;
+}
+
+.payment__secure-note svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ─── Factures ─── */
+.payment__invoices-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.payment__invoices-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  padding: 0 12px 10px 0;
+  border-bottom: 0.5px solid var(--border-subtle);
+}
+
+.payment__invoices-table td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 0.5px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.payment__invoices-table tr:last-child td {
+  border-bottom: none;
+}
+
+.payment__inv-ref {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary) !important;
+}
+
+.payment__dl-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--accent);
+  background: none;
+  border: 0.5px solid var(--accent-mid);
+  border-radius: var(--radius-md);
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: background var(--transition-fast);
+}
+
+.payment__dl-btn:hover {
+  background: var(--accent-light);
+}

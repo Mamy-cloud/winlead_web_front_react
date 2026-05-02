@@ -1,0 +1,9 @@
+/* Config.css */
+
+.config__status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  padding: 6px 0;
+}

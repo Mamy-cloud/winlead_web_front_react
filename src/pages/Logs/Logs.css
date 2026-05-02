@@ -1,0 +1,44 @@
+/* Logs.css */
+
+.logs__filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logs__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 0.5px solid var(--border-subtle);
+  font-size: 12px;
+}
+
+.logs__row:last-child { border-bottom: none; }
+
+.logs__time {
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.logs__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.logs__msg { color: var(--text-secondary); line-height: 1.4; }
+
+.logs__row--ok   .logs__dot { background: var(--color-success); }
+.logs__row--warn .logs__dot { background: #EF9F27; }
+.logs__row--err  .logs__dot { background: var(--color-danger); }
+
+.logs__row--err  .logs__msg { color: var(--color-danger); }
+.logs__row--warn .logs__msg { color: var(--color-warning); }

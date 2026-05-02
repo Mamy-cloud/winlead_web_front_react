@@ -1,0 +1,32 @@
+/* Clients.css */
+
+.clients__search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clients__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border-subtle);
+}
+
+.clients__row:last-child { border-bottom: none; }
+
+.clients__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.clients__name {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.clients__meta {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
