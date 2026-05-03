@@ -1,7 +1,95 @@
 /* IASettings.css */
 
-.ia__prompt-actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 4px;
+.ia__intro {
+  font-size: 13px; color: var(--text-secondary);
+  margin-bottom: 16px; line-height: 1.6;
 }
+
+.ia__step-badge {
+  font-size: 11px; font-weight: 600;
+  color: var(--accent-dark); background: var(--accent-light);
+  padding: 3px 10px; border-radius: var(--radius-full);
+}
+
+/* ─── Checkboxes ─── */
+.ia__checks { display: flex; flex-direction: column; gap: 8px; }
+
+.ia__check-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-secondary); cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.ia__check-row:hover { border-color: var(--border-medium); background: var(--bg-hover); }
+.ia__check-row--on   { border-color: var(--accent-mid); background: var(--accent-light); }
+
+.ia__check-box   { font-size: 18px; flex-shrink: 0; }
+.ia__check-label { font-size: 14px; font-weight: 500; }
+
+/* ─── Tone ─── */
+.ia__tone-options { display: flex; gap: 10px; }
+
+.ia__tone-btn {
+  flex: 1; display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; border-radius: var(--radius-lg);
+  border: 2px solid var(--border-light);
+  background: var(--bg-secondary); cursor: pointer;
+  text-align: left; transition: all var(--transition-base);
+}
+.ia__tone-btn:hover { border-color: var(--border-medium); }
+.ia__tone-btn--active { border-color: var(--accent); background: var(--accent-light); }
+
+.ia__tone-name  { font-size: 14px; font-weight: 600; }
+.ia__tone-desc  { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+.ia__check-active { margin-left: auto; font-size: 18px; color: var(--accent); font-weight: 700; }
+
+/* ─── Prompt card ─── */
+.ia__prompt-card { border: 2px solid var(--accent-mid); background: #FAFFFE; }
+
+.ia__toggle-prompt {
+  font-size: 13px; color: var(--accent); background: none;
+  border: 0.5px solid var(--accent-mid); border-radius: var(--radius-md);
+  padding: 5px 12px; cursor: pointer; transition: background var(--transition-fast);
+}
+.ia__toggle-prompt:hover { background: var(--accent-light); }
+
+.ia__prompt-preview {
+  background: var(--bg-secondary); border-radius: var(--radius-md);
+  padding: 14px 16px; margin-bottom: 16px;
+  border: 0.5px solid var(--border-light); overflow-x: auto;
+}
+.ia__prompt-preview pre {
+  font-family: var(--font-mono); font-size: 12px;
+  line-height: 1.7; color: var(--text-primary);
+  white-space: pre-wrap; word-break: break-word;
+}
+
+.ia__prompt-actions { display: flex; gap: 10px; margin-bottom: 14px; }
+
+.ia__copy-btn { font-weight: 600; }
+
+.ia__vapi-hint {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 12px 14px; border-radius: var(--radius-md);
+  background: var(--color-info-bg);
+  font-size: 12px; color: var(--color-info); line-height: 1.6;
+}
+.ia__vapi-hint a { color: var(--color-info); font-weight: 600; text-decoration: underline; }
+
+/* ─── Voices ─── */
+.ia__voices { display: flex; flex-direction: column; gap: 10px; }
+
+.ia__voice-btn {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 18px; border-radius: var(--radius-lg);
+  border: 2px solid var(--border-light);
+  background: var(--bg-secondary); cursor: pointer;
+  text-align: left; transition: all var(--transition-base); width: 100%;
+}
+.ia__voice-btn:hover { border-color: var(--border-medium); }
+.ia__voice-btn--active { border-color: var(--accent); background: var(--accent-light); }
+
+.ia__voice-name  { font-size: 14px; font-weight: 600; }
+.ia__voice-desc  { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.ia__voice-check { margin-left: auto; font-size: 20px; color: var(--accent); font-weight: 700; }

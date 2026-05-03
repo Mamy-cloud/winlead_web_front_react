@@ -72,6 +72,7 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
     const errs = validate();
     if (Object.keys(errs).length) { setFieldErrors(errs); return; }
     setFieldErrors({});
+    // Mode test — accès direct au dashboard sans API
     onRegisterSuccess?.();
   };
 
@@ -105,13 +106,17 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
 
         <form className="auth-page__form" onSubmit={handleSubmit} noValidate>
 
+          {/* Nom / Prénom */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div className="auth-page__field">
               <label className="auth-page__label">Prénom</label>
               <input
                 className={'auth-page__input' + (fieldErrors.prenom ? ' auth-page__input--error' : '')}
-                type="text" placeholder="Jean"
-                value={form.prenom} onChange={set('prenom')} autoComplete="given-name"
+                type="text"
+                placeholder="Jean"
+                value={form.prenom}
+                onChange={set('prenom')}
+                autoComplete="given-name"
               />
               {fieldErrors.prenom && <span className="auth-page__input-error-msg">{fieldErrors.prenom}</span>}
             </div>
@@ -119,23 +124,31 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
               <label className="auth-page__label">Nom</label>
               <input
                 className={'auth-page__input' + (fieldErrors.nom ? ' auth-page__input--error' : '')}
-                type="text" placeholder="Dupont"
-                value={form.nom} onChange={set('nom')} autoComplete="family-name"
+                type="text"
+                placeholder="Dupont"
+                value={form.nom}
+                onChange={set('nom')}
+                autoComplete="family-name"
               />
               {fieldErrors.nom && <span className="auth-page__input-error-msg">{fieldErrors.nom}</span>}
             </div>
           </div>
 
+          {/* Email */}
           <div className="auth-page__field">
             <label className="auth-page__label">Adresse email</label>
             <input
               className={'auth-page__input' + (fieldErrors.email ? ' auth-page__input--error' : '')}
-              type="email" placeholder="jean@email.fr"
-              value={form.email} onChange={set('email')} autoComplete="email"
+              type="email"
+              placeholder="jean@email.fr"
+              value={form.email}
+              onChange={set('email')}
+              autoComplete="email"
             />
             {fieldErrors.email && <span className="auth-page__input-error-msg">{fieldErrors.email}</span>}
           </div>
 
+          {/* Numéro Twilio — obligatoire */}
           <div className="auth-page__field">
             <label className="auth-page__label">
               Numéro Twilio
@@ -143,17 +156,24 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
             </label>
             <input
               className={'auth-page__input' + (fieldErrors.twilioNumber ? ' auth-page__input--error' : '')}
-              type="tel" placeholder="+33756001234"
-              value={form.twilioNumber} onChange={set('twilioNumber')} autoComplete="off"
+              type="tel"
+              placeholder="+33756001234"
+              value={form.twilioNumber}
+              onChange={set('twilioNumber')}
+              autoComplete="off"
             />
             {fieldErrors.twilioNumber
               ? <span className="auth-page__input-error-msg">{fieldErrors.twilioNumber}</span>
               : (
                 <div className="auth-page__field-hint">
-                  Pas de numéro Twilio ?{' '}
+                  <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style={{ flexShrink: 0, marginTop: 1 }}>
+                    <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 3.5h1.5v4.5h-1.5zm0 5.5h1.5v1.5h-1.5z"/>
+                  </svg>
+                  Ce doit être un numéro acheté sur{' '}
                   <a href="https://www.twilio.com/login" target="_blank" rel="noreferrer">
-                    Cliquer ici
+                    console.twilio.com
                   </a>
+                  {' '}au format international (+33…)
                 </div>
               )
             }
@@ -161,13 +181,17 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
 
           <div className="auth-page__section-sep" />
 
+          {/* Mot de passe */}
           <div className="auth-page__field">
             <label className="auth-page__label">Mot de passe</label>
             <div className="auth-page__input-wrap">
               <input
                 className={'auth-page__input' + (fieldErrors.password ? ' auth-page__input--error' : '')}
-                type={showPwd ? 'text' : 'password'} placeholder="••••••••"
-                value={form.password} onChange={set('password')} autoComplete="new-password"
+                type={showPwd ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={form.password}
+                onChange={set('password')}
+                autoComplete="new-password"
               />
               <button type="button" className="auth-page__eye-btn" onClick={() => setShowPwd(v => !v)} tabIndex={-1}>
                 <EyeIcon open={showPwd} />
@@ -179,7 +203,9 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
                 <div className="auth-page__pwd-strength">
                   {['weak', 'medium', 'strong'].map((lvl, i) => {
                     const active = strength === 'weak' ? i === 0 : strength === 'medium' ? i <= 1 : true;
-                    return <div key={lvl} className={'auth-page__pwd-bar' + (active ? ' auth-page__pwd-bar--' + strength : '')} />;
+                    return (
+                      <div key={lvl} className={'auth-page__pwd-bar' + (active ? ' auth-page__pwd-bar--' + strength : '')} />
+                    );
                   })}
                 </div>
                 <div className={'auth-page__pwd-label auth-page__pwd-label--' + strength}>
@@ -189,13 +215,17 @@ export default function Register({ onNavigateToLogin, onRegisterSuccess }) {
             )}
           </div>
 
+          {/* Confirmer */}
           <div className="auth-page__field">
             <label className="auth-page__label">Confirmer le mot de passe</label>
             <div className="auth-page__input-wrap">
               <input
                 className={'auth-page__input' + (fieldErrors.confirm ? ' auth-page__input--error' : '')}
-                type={showConfirm ? 'text' : 'password'} placeholder="••••••••"
-                value={form.confirm} onChange={set('confirm')} autoComplete="new-password"
+                type={showConfirm ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={form.confirm}
+                onChange={set('confirm')}
+                autoComplete="new-password"
               />
               <button type="button" className="auth-page__eye-btn" onClick={() => setShowConfirm(v => !v)} tabIndex={-1}>
                 <EyeIcon open={showConfirm} />

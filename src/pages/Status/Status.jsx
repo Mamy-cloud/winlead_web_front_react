@@ -1,87 +1,60 @@
 import { useState } from 'react';
 import './Status.css';
 
-const DAYS = [
-  { name: 'Lun', slots: ['on', 'on', 'partial'] },
-  { name: 'Mar', slots: ['on', 'on', 'on'] },
-  { name: 'Mer', slots: ['on', 'on', 'partial'] },
-  { name: 'Jeu', slots: ['on', 'on', 'on'] },
-  { name: 'Ven', slots: ['on', 'on', 'off'] },
-  { name: 'Sam', slots: ['partial', 'off', 'off'] },
-  { name: 'Dim', slots: ['off', 'off', 'off'] },
-];
-
-const REDIRECTS = [
-  { id: 'ia-fallback', label: 'IA prend le relais si occupé',    sub: 'Bascule automatiquement sur l\'IA vocale', defaultOn: true },
-  { id: 'voicemail',   label: 'Message de boîte vocale',         sub: 'Si IA indisponible, enregistrement vocal', defaultOn: false },
-  { id: 'sms-notif',   label: 'Notification SMS appel manqué',   sub: 'Reçois un SMS pour chaque appel raté',     defaultOn: true },
-];
-
 export default function Status() {
   const [currentStatus, setCurrentStatus] = useState('available');
-  const [toggles, setToggles] = useState(() =>
-    Object.fromEntries(REDIRECTS.map(r => [r.id, r.defaultOn]))
-  );
 
-  const flip = id => setToggles(t => ({ ...t, [id]: !t[id] }));
+  const OPTIONS = [
+    { id: 'available', emoji: '🟢', label: 'Je suis disponible',   sub: 'Je réponds aux appels',           cls: 'available' },
+    { id: 'busy',      emoji: '🟡', label: 'Je suis occupé',        sub: "L'IA prend les appels à ma place", cls: 'busy'      },
+    { id: 'offline',   emoji: '🔴', label: 'Je suis hors ligne',    sub: "L'IA gère tout",                  cls: 'offline'   },
+  ];
 
   return (
     <div>
       <div className="card">
-        <div className="card-header"><span className="card-title">Mon statut actuel</span></div>
-
-        <div className="status__selector">
-          {['available', 'busy', 'offline'].map(s => (
+        <div className="card-header"><span className="card-title">🟢 Mon statut en ce moment</span></div>
+        <p className="status__intro">Dis à l'IA si tu es disponible pour répondre aux appels.</p>
+        <div className="status__options">
+          {OPTIONS.map(o => (
             <button
-              key={s}
-              className={`status__btn${currentStatus === s ? ` status__btn--${s}` : ''}`}
-              onClick={() => setCurrentStatus(s)}
+              key={o.id}
+              className={'status__option status__option--' + o.cls + (currentStatus === o.id ? ' status__option--selected' : '')}
+              onClick={() => setCurrentStatus(o.id)}
             >
-              {{ available: 'Disponible', busy: 'Occupé', offline: 'Hors ligne' }[s]}
+              <span className="status__option-emoji">{o.emoji}</span>
+              <div>
+                <div className="status__option-label">{o.label}</div>
+                <div className="status__option-sub">{o.sub}</div>
+              </div>
+              {currentStatus === o.id && <span className="status__check">✓</span>}
             </button>
           ))}
-        </div>
-
-        <div className="section-title">Horaires de travail</div>
-
-        <div className="status__schedule">
-          {DAYS.map(({ name, slots }) => (
-            <div className="status__day-col" key={name}>
-              <div className="status__day-name">{name}</div>
-              {slots.map((s, i) => (
-                <div key={i} className={`status__slot status__slot--${s}`} />
-              ))}
-            </div>
-          ))}
-        </div>
-
-        <div className="status__legend">
-          <div className="status__legend-item">
-            <div className="status__legend-dot" style={{ background: 'var(--accent)' }} />Ouvert
-          </div>
-          <div className="status__legend-item">
-            <div className="status__legend-dot" style={{ background: 'var(--accent-mid)' }} />Partiel
-          </div>
-          <div className="status__legend-item">
-            <div className="status__legend-dot" style={{ background: 'var(--bg-secondary)', border: '0.5px solid var(--border-light)' }} />Fermé
-          </div>
         </div>
       </div>
 
       <div className="card">
-        <div className="card-header"><span className="card-title">Règles de redirection</span></div>
-        {REDIRECTS.map(r => (
-          <div className="toggle-row" key={r.id}>
-            <div>
-              <div className="toggle-label">{r.label}</div>
-              <div className="toggle-sub">{r.sub}</div>
-            </div>
-            <label className="switch">
-              <input type="checkbox" checked={toggles[r.id]} onChange={() => flip(r.id)} />
-              <span className="switch-slider" />
-            </label>
+        <div className="card-header"><span className="card-title">⚙️ Réglages automatiques</span></div>
+        <div className="toggle-row">
+          <div>
+            <div className="toggle-label">📵 L'IA répond si je ne décroche pas</div>
+            <div className="toggle-sub">Après 4 secondes sans réponse, l'IA prend le relais</div>
           </div>
-        ))}
+          <label className="switch">
+            <input type="checkbox" defaultChecked />
+            <span className="switch-slider" />
+          </label>
+        </div>
+        <div className="toggle-row">
+          <div>
+            <div className="toggle-label">📩 Me prévenir par SMS si appel manqué</div>
+            <div className="toggle-sub">Tu reçois un SMS avec le nom et le numéro</div>
+          </div>
+          <label className="switch">
+            <input type="checkbox" defaultChecked />
+            <span className="switch-slider" />
+          </label>
+        </div>
       </div>
     </div>
   );

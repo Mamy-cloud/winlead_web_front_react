@@ -1,114 +1,64 @@
 /* Dashboard.css */
 
-/* ─── Bar Chart ─── */
-.dashboard__chart-wrap {
-  height: 130px;
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  padding-top: 8px;
+.dashboard__alert-missed {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--color-danger-bg);
+  border: 1px solid rgba(163,45,45,0.2);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 24px;
 }
 
-.dashboard__bar-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+.dashboard__alert-icon { font-size: 28px; flex-shrink: 0; }
+
+.dashboard__alert-title {
+  font-size: 15px; font-weight: 600;
+  color: var(--color-danger);
 }
 
-.dashboard__bar-stack {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 2px;
+.dashboard__alert-sub {
+  font-size: 12px; color: var(--color-danger);
+  opacity: 0.8; margin-top: 2px;
 }
 
-.dashboard__bar {
-  width: 100%;
-  border-radius: 3px 3px 0 0;
-  min-height: 3px;
-  transition: opacity 0.15s;
+.dashboard__alert-missed .btn-primary { margin-left: auto; white-space: nowrap; flex-shrink: 0; }
+
+/* Missed row */
+.dashboard__missed-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 0; border-bottom: 0.5px solid var(--border-subtle);
 }
+.dashboard__missed-row:last-child { border-bottom: none; }
+.dashboard__missed-info { flex: 1; min-width: 0; }
+.dashboard__missed-name { font-size: 14px; font-weight: 600; }
+.dashboard__missed-time { font-size: 12px; color: var(--text-secondary); }
 
-.dashboard__bar:hover { opacity: 0.8; }
-
-.dashboard__bar--ia    { background: var(--accent); }
-.dashboard__bar--human { background: #378ADD; }
-
-.dashboard__bar-label {
-  font-size: 9px;
-  color: var(--text-tertiary);
-  font-weight: 500;
-}
-
-.dashboard__legend {
-  display: flex;
-  gap: 14px;
-}
-
-.dashboard__legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: var(--text-secondary);
-}
-
-.dashboard__legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-
-/* ─── Call Row ─── */
-.dashboard__call-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border-subtle);
-}
-
-.dashboard__call-row:last-child { border-bottom: none; }
-
-.dashboard__call-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.dashboard__call-name {
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.dashboard__call-time {
-  font-size: 11px;
-  color: var(--text-secondary);
-}
-
-.dashboard__call-dur {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-right: 6px;
-  font-variant-numeric: tabular-nums;
-}
-
-/* ─── Card action link ─── */
-.dashboard__card-link {
-  font-size: 12px;
-  color: var(--accent);
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 4px 8px;
-  border-radius: var(--radius-md);
+.dashboard__call-back-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: var(--radius-md);
+  background: var(--accent); color: white;
+  font-size: 13px; font-weight: 500;
+  border: none; cursor: pointer; white-space: nowrap;
+  text-decoration: none;
   transition: background var(--transition-fast);
 }
+.dashboard__call-back-btn:hover { background: var(--accent-dark); }
 
-.dashboard__card-link:hover { background: var(--accent-light); }
+/* Call row */
+.dashboard__call-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 0; border-bottom: 0.5px solid var(--border-subtle);
+}
+.dashboard__call-row:last-child { border-bottom: none; }
+.dashboard__call-info { flex: 1; min-width: 0; }
+.dashboard__call-name { font-size: 14px; font-weight: 600; }
+.dashboard__call-meta { font-size: 12px; color: var(--text-secondary); }
+.dashboard__call-dur  { font-size: 12px; color: var(--text-secondary); margin-right: 6px; }
+
+.dashboard__link {
+  font-size: 13px; color: var(--accent);
+  background: none; border: none; cursor: pointer;
+  padding: 4px 8px; border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+.dashboard__link:hover { background: var(--accent-light); }

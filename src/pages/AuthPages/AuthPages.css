@@ -321,9 +321,13 @@
 
 /* ─── Hint sous un champ ─── */
 .auth-page__field-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
   font-size: 11px;
   color: var(--text-tertiary);
   margin-top: 5px;
+  line-height: 1.5;
 }
 
 .auth-page__field-hint a {

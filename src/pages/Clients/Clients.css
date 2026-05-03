@@ -1,32 +1,19 @@
 /* Clients.css */
-
-.clients__search-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .clients__row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border-subtle);
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 0.5px solid var(--border-subtle);
 }
-
 .clients__row:last-child { border-bottom: none; }
+.clients__info  { flex: 1; min-width: 0; }
+.clients__name  { font-size: 14px; font-weight: 600; }
+.clients__meta  { font-size: 12px; color: var(--text-secondary); }
 
-.clients__info {
-  flex: 1;
-  min-width: 0;
+.clients__call-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: var(--radius-md);
+  background: var(--accent); color: white;
+  font-size: 13px; font-weight: 500;
+  border: none; cursor: pointer; white-space: nowrap;
+  text-decoration: none; transition: background var(--transition-fast);
 }
-
-.clients__name {
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.clients__meta {
-  font-size: 11px;
-  color: var(--text-secondary);
-}
+.clients__call-btn:hover { background: var(--accent-dark); }
